@@ -1,0 +1,35 @@
+{
+  "name": "users-api",
+  "version": "1.0.0",
+  "description": "API para usuarios, roles y permisos",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "nodemon app.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelmt2396/users-api.git"
+  },
+  "author": "angelmt2396",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelmt2396/users-api/issues"
+  },
+  "homepage": "https://github.com/angelmt2396/users-api#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.2.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5"
+  }
+}
