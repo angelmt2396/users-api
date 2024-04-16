@@ -23,6 +23,10 @@ const UserSchema = new Schema(
         ref: 'Role',
       },
     ],
+    createdBy: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true },
 );

@@ -15,7 +15,7 @@ import { customResponse } from '../../../utils/response/custom.response.js';
 import { BaseService } from '../base/base.service.js';
 import { userRepository } from '../../../repositories/user.repository.js';
 
-export class UserService extends BaseService {
+class UserService extends BaseService {
   constructor(userRepository) {
     super(userRepository);
     this.userRepository = userRepository;

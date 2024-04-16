@@ -5,6 +5,8 @@ const RoleSchema = new Schema(
     rolename: {
       type: String,
       required: true,
+      unique: true,
+      index: true,
     },
     permissions: [
       {
@@ -12,10 +14,13 @@ const RoleSchema = new Schema(
         ref: 'Permission',
       },
     ],
+    createdBy: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true },
 );
 
-export default {
-  roleModel: model('Role', RoleSchema),
-};
+const RoleModel = model('Role', RoleSchema);
+export default RoleModel;
