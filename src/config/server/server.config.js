@@ -1,11 +1,19 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import { ValidateRequest } from '../../middleware/validate-request.js';
 export class ServerConfig {
-  constructor(app) {
-    this.app = app;
+  constructor() {
+    this.app = express();
+    this.middlewares();
   }
 
-  middlewares(cors, validateRequest) {
+  middlewares() {
     this.app.use(cors());
-    this.app.use(validateRequest);
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(ValidateRequest);
+    this.app.use(helmet());
   }
 
   routes(userRouter) {
