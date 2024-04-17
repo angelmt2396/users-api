@@ -1,11 +1,17 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import serverless from 'serverless-http';
 import { ValidateRequest } from '../../middleware/validate-request.js';
+import { connectionDB } from '../database/mongo.connection.js';
+import environment from '../environment/index.js';
+import userRouter from '../../routes/v1/user.router.js';
 export class ServerConfig {
   constructor() {
     this.app = express();
     this.middlewares();
+    this.routes(userRouter);
+    this.srv = serverless(this.app);
   }
 
   middlewares() {
@@ -24,5 +30,9 @@ export class ServerConfig {
     this.app.listen(port, () => {
       console.log(`server ON in port: ${port}`);
     });
+  }
+
+  returnSrv() {
+    return this.srv;
   }
 }
