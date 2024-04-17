@@ -13,7 +13,7 @@ export const ValidateRequest = (req, res, next) => {
       message: DATA_VALIDATION_ERROR,
       data: errors.array(),
     };
-    res.status(result.code).json(result);
+    return res.status(result.code).json(result);
   }
   next();
 };
