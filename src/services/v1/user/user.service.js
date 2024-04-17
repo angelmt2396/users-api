@@ -19,6 +19,7 @@ import { BaseService } from '../base/base.service.js';
 import { userRepository } from '../../../repositories/user.repository.js';
 import { roleService } from '../role/role.service.js';
 import UserModel from '../../../models/user.model.js';
+import { encryption } from '../../../utils/encryption/bcrypt.utils.js';
 class UserService extends BaseService {
   constructor(userRepository, roleService) {
     super(userRepository);
@@ -53,7 +54,7 @@ class UserService extends BaseService {
       const userCreate = await this.userRepository.create(
         new UserModel({
           username,
-          password,
+          password: await encryption(password),
           email,
           roles: [id],
           createdBy: 'SYS',
@@ -73,8 +74,10 @@ class UserService extends BaseService {
   async updateUser(user) {
     try {
       const { username, password, email, role: rolename } = user;
-      const findUser = await this.findOneByUsername(username);
-      if (!findUser.data) throw new CustomException(findUser);
+      const findUser = await this.userRepository.findOneByUsername({
+        username,
+      });
+      if (!findUser) throw new CustomException(findUser);
       const findRole = await this.roleService.findOneByRolename({ rolename });
       if (!findRole.data) {
         throw new CustomException({
@@ -86,9 +89,9 @@ class UserService extends BaseService {
       }
       const id = findRole.data._id;
       console.log(id);
-      const userUpdate = await this.userRepository.update(findUser.data.id, {
+      const updateUser = await this.userRepository.update(findUser._id, {
         username,
-        password,
+        password: await encryption(password),
         email,
         roles: [id],
       });
@@ -96,7 +99,7 @@ class UserService extends BaseService {
         status: SUCCESS,
         message: SUCCESSFUL_CREATE,
         code: CODE_200,
-        data: this.createOrUpdateUserData(userUpdate),
+        data: this.createOrUpdateUserData(updateUser),
       });
     } catch (error) {
       throw handleException(error);
