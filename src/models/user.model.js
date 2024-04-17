@@ -20,7 +20,7 @@ const UserSchema = new Schema(
     roles: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Role',
+        ref: 'role',
       },
     ],
     createdBy: {
@@ -31,5 +31,5 @@ const UserSchema = new Schema(
   { timestamps: true },
 );
 
-const UserModel = model('User', UserSchema);
+const UserModel = model('user', UserSchema);
 export default UserModel;

@@ -11,7 +11,7 @@ const RoleSchema = new Schema(
     permissions: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Permission',
+        ref: 'permission',
       },
     ],
     createdBy: {
@@ -22,5 +22,5 @@ const RoleSchema = new Schema(
   { timestamps: true },
 );
 
-const RoleModel = model('Role', RoleSchema);
+const RoleModel = model('role', RoleSchema);
 export default RoleModel;

@@ -1,5 +1,6 @@
 import { handleException } from '../../../exceptions/handle.exception.js';
 import { userService } from '../../../services/v1/user/user.service.js';
+import { CustomException } from '../../../exceptions/custom.exception.js';
 export class UserController {
   constructor(request, response) {
     this.request = request;
@@ -33,7 +34,7 @@ export class UserController {
   async findAll(_req = this.request, res = this.response) {
     try {
       console.log('Inicia proceso');
-      const result = await userService.findAll();
+      const result = await userService.findAllUsers();
       console.log('Termina proceso');
       return res.status(result.code).json(result);
     } catch (error) {
@@ -45,7 +46,8 @@ export class UserController {
   async findOneByUsername(req = this.request, res = this.response) {
     try {
       console.log('Inicia proceso');
-      const result = await userService.findOneByUsername(req.params.username);
+      const result = await userService.findOneByUsername(req.query.username);
+      if (!result.data) throw new CustomException(result);
       console.log('Termina proceso');
       return res.status(result.code).json(result);
     } catch (error) {

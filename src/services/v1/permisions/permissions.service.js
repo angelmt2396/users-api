@@ -1,4 +1,4 @@
-import { BaseService } from '../base/base.service';
+import { BaseService } from '../base/base.service.js';
 import { permissionRepository } from '../../../repositories/permission.repository.js';
 
 class PermssionsService extends BaseService {

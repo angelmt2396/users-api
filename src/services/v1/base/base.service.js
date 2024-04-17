@@ -16,7 +16,7 @@ export class BaseService {
   async findOneById(id) {
     const findOne = await this.repository.getById(id);
     if (!findOne)
-      throw new CustomException({
+      return customResponse({
         status: ERROR,
         code: CODE_404,
         message: UNSUCCESSFUL_SEARCH,
@@ -33,7 +33,7 @@ export class BaseService {
   async findAll() {
     const findAll = await this.repository.findAll();
     if (!findAll.length) {
-      throw new CustomException({
+      return customResponse({
         status: ERROR,
         code: CODE_404,
         message: UNSUCCESSFUL_SEARCH,

@@ -8,6 +8,10 @@ export class UserRepository extends BaseRepository {
   async deleteMany(where) {
     return await this.userModel.deleteMany(where);
   }
+
+  async findOneByUsername(username) {
+    return await this.getByIndex(username);
+  }
 }
 
 export const userRepository = new UserRepository(UserModel);

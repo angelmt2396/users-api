@@ -11,10 +11,11 @@ export const handleException = (error) => {
   if (error instanceof CustomException) {
     return customResponse(error);
   }
+  const message = error.message || INTERNAL_SERVER_ERROR;
   return customResponse({
     status: ERROR,
-    code: CODE_500,
-    message: INTERNAL_SERVER_ERROR,
+    code: error?.code <= 599 ? error?.code : CODE_500,
+    message,
     data: null,
   });
 };

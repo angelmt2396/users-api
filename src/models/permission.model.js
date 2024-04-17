@@ -22,5 +22,5 @@ const PermissionSchema = new Schema(
   { timestamps: true },
 );
 
-const permissionModel = model('Permission', PermissionSchema);
+const permissionModel = model('permission', PermissionSchema);
 export default permissionModel;

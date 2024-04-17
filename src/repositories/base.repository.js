@@ -4,7 +4,7 @@ export class BaseRepository {
   }
 
   async getByIndex(index) {
-    return await this.model.User.findOne(index);
+    return await this.model.findOne(index);
   }
 
   async getById(id) {
@@ -12,11 +12,15 @@ export class BaseRepository {
   }
 
   async create(entity) {
-    return await this.model.insertOne(entity);
+    return await entity.save();
   }
 
   async update(id, entity) {
-    return await this.model.findByIdAndUpdate(id, entity, { new: true });
+    return await this.model.findByIdAndUpdate(
+      id,
+      { $set: entity },
+      { new: true },
+    );
   }
 
   async findAll() {
