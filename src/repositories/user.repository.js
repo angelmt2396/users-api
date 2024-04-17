@@ -3,6 +3,7 @@ import UserModel from '../models/user.model.js';
 export class UserRepository extends BaseRepository {
   constructor(userModel) {
     super(userModel);
+    this.userModel = userModel;
   }
 
   async deleteMany(where) {

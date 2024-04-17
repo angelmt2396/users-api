@@ -11,7 +11,8 @@ export const SUCCESS = 'success';
 export const ERROR = 'error';
 export const EMPTY_USERNAME_VALIDATION = 'username no puede estar vacio.';
 export const USERNAME_STRING_VALIDATION = 'username debe ser un string';
-export const USERNAMES_ARRAY_VALIDATION = 'usernames debe ser un arreglo no vacio.';
+export const USERNAMES_ARRAY_VALIDATION =
+  'usernames debe ser un arreglo no vacio.';
 export const EMPTY_PASSWORD_VALIDATION = 'password no puede estar vacio.';
 export const PASSWORD_STRING_VALIDATION = 'password debe ser un string';
 export const EMPTY_ROLE_VALIDATION = 'role no puede estar vacio.';

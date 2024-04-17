@@ -130,8 +130,7 @@ class UserService extends BaseService {
   }
 
   async deleteMany(usernames) {
-    const condition = { _id: { $in: usernames } };
-    await this.userRepository.deleteMany(condition);
+    await this.userRepository.deleteMany({ username: { $in: usernames } });
     return customResponse({
       status: SUCCESS,
       message: SUCCESSFUL_DELETE,
