@@ -52,3 +52,18 @@ variable "API_GATEWAY_NAME" {
   default = "users-roles-api"
   type = string
 }
+
+variable "SECRET_LOGIN" {
+  description = "usuario para la autenticación básica."
+  type = string
+}
+variable "SECRET_PWD" {
+  description = "contraseña para la autenticación básica."
+  type = string
+}
+
+variable "BASIC_AUTH_ACTIVE" {
+  description = "Activar o desactivar la autenticación básica."
+  default = 0
+  type = number
+}

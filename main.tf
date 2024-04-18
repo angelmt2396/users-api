@@ -55,6 +55,10 @@ resource "aws_lambda_function" "users_lambda" {
         NODE_ENV = var.NODE_ENV
         APPLICATION_NAME = var.APPLICATION_NAME
         HOST = var.HOST
+        SECRET_LOGIN = var.SECRET_LOGIN
+        SECRET_PWD = var.SECRET_PWD
+        BASIC_AUTH_ACTIVE = var.BASIC_AUTH_ACTIVE
+
       }
   }
 }

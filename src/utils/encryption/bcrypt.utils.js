@@ -5,3 +5,7 @@ export const encryption = async (text) => {
   const hash = await bcrypt.hash(text, salt);
   return hash;
 };
+
+export const compare = async (text, hash) => {
+  return await bcrypt.compare(text, hash);
+};

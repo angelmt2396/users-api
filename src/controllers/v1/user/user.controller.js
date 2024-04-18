@@ -14,7 +14,7 @@ export class UserController {
       console.log('Termina proceso');
       return res.status(result.code).json(result);
     } catch (error) {
-      const errorHandler = handleException(error);
+      const errorHandler = handleException(error); 
       return res.status(errorHandler.code).json(errorHandler);
     }
   }

@@ -3,9 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import serverless from 'serverless-http';
 import { ValidateRequest } from '../../middleware/validate-request.js';
-import { connectionDB } from '../database/mongo.connection.js';
-import environment from '../environment/index.js';
 import userRouter from '../../routes/v1/user.router.js';
+import { basicAuth } from '../../middleware/basic-auth.js';
 export class ServerConfig {
   constructor() {
     this.app = express();
@@ -19,6 +18,7 @@ export class ServerConfig {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(ValidateRequest);
+    this.app.use(basicAuth);
     this.app.use(helmet());
   }
 
